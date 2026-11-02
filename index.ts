@@ -20,8 +20,8 @@ export default function (pi: ExtensionAPI) {
     const projectFile = join(process.cwd(), ".pi", "INSTRUCTION.md");
     file = [projectFile, userFile].find(existsSync) ?? null;
   });
-  pi.registerCommand("one-instruction", {
-    description: "Toggle one instruction",
+  pi.registerCommand("manip", {
+    description: "Aggressive manipulation tools for Pi",
     getArgumentCompletions: (prefix): AutocompleteItem[] => {
       return ["on", "off", "view"]
         .filter((value) => value.startsWith(prefix.trim()))
@@ -46,7 +46,7 @@ export default function (pi: ExtensionAPI) {
           .join("\n");
         ctx.ui.notify(`View: ${file}\n${numbered}`, "info");
       } else {
-        ctx.ui.notify("Usage: /one-instruction on|off|view", "warning");
+        ctx.ui.notify("Usage: /manip on|off|view", "warning");
       }
     },
   });

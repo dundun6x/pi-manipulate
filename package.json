@@ -1,11 +1,11 @@
 {
-  "name": "pi-one-instruction",
+  "name": "pi-manipulate",
   "version": "0.2.2",
   "description": "Overwrite Pi's system prompts with a single instruction file",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dundun6x/pi-one-instruction.git"
+    "url": "git+https://github.com/dundun6x/pi-manipulate.git"
   },
   "keywords": [
     "pi-package",
