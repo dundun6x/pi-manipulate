@@ -1,7 +1,7 @@
 {
   "name": "pi-manipulate",
   "version": "0.2.2",
-  "description": "Overwrite Pi's system prompts with a single instruction file",
+  "description": "Aggressive manipulation tools for Pi",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,10 +13,10 @@
     "system-prompts",
     "instructions"
   ],
+  "main": "./index.ts",
   "files": [
     "index.ts",
-    "README.md",
-    "LICENSE"
+    "src"
   ],
   "type": "module",
   "pi": {

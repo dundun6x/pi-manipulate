@@ -4,33 +4,41 @@
 [![npm downloads](https://img.shields.io/npm/dm/pi-manipulate)](https://www.npmjs.com/package/pi-manipulate)
 [![license](https://img.shields.io/github/license/dundun6x/pi-manipulate)](LICENSE)
 
-Overwrite [Pi](https://github.com/earendil-works/pi)'s system prompts with a single instruction file.
+Aggressive manipulation tools for [Pi](https://github.com/earendil-works/pi).
 
 ## Installation
 
 ```bash
-$ pi install npm:pi-manipulate
+pi install npm:pi-manipulate
 ```
 
-## Usage
+## Features
 
-Instruction files are checked in the following order of priority:
+### Custom instructions
 
-- `pi --instruction <file>` — Highest priority instruction
-- `./.pi/INSTRUCTION.md` — Project-level instruction
-- `~/.pi/agent/INSTRUCTION.md` — User-level instruction
+Here, 'instructions' refers to the assembled system prompt, named after its corresponding payload field. When this feature is enabled (by default), the instructions file replaces the assembled system prompt. Any built-in or extension instructions parts are blocked. The example parts are:
+
+- The system prompt (can be specified by `--system-prompt` or `SYSTEM.md`)
+- The available skills (wrapped in `<skills>`)
+- The current working directory (wrapped in `<cwd>`)
+
+Custom instructions are checked in the following order of priority:
+
+- `pi --instructions <file>` — Highest priority instructions
+- `./.pi/INSTRUCTIONS.md` — Project-level instructions
+- `~/.pi/agent/INSTRUCTIONS.md` — User-level instructions
 
 In-session commands are available:
 
-- `/manip on` — Enable the custom instruction
-- `/manip off` — Disable the custom instruction
-- `/manip view` — View the custom instruction
+- `/manip-instr on` — Enable the custom instructions
+- `/manip-instr off` — Disable the custom instructions
+- `/manip-instr view` — View the custom instructions
 
-When enabled (by default), the instruction file replaces the assembled system prompt. Any built-in or additional instructions provided by Pi or extensions are discarded. However, they remain in the underlying session data. To prevent them from reaching the model via session history, they are filtered out before being sent.
+Notably, the underlying session data remains untouched. Since built-in or extension prompts may still be injected into the request as 'system' or 'developer' role messages, this extension filters them out before sending requests to the model.
 
-## Motivation
+Motivation for this feature:
 
-Frontier models no longer need hand-holding to perform well, making bloated system prompts both a distraction and a waste of tokens. Since Pi and its extensions collectively assemble the final prompt, keeping instructions clean is challenging. By intercepting the payload sent to the provider, this extension gives you absolute control over the final `instructions`, letting you retain extension tools and features without their prompt bloat.
+Frontier models no longer need hand-holding to perform well, making verbose instructions both a distraction and a waste of tokens. Since Pi and its extensions collectively assemble the final prompt, keeping instructions clean is challenging. By intercepting the payload sent to the provider, this extension gives you absolute control over the final instructions, letting you retain extension tools and features without their prompt bloat.
 
 ## License
 
