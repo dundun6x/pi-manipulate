@@ -33,7 +33,13 @@ export function handleManipCommand(state: ExtensionState, ctx: ExtensionContext,
     return;
   }
 
-  if (cmd === "view") {
+  if (cmd === "before") {
+    const formatted = formatWithLineNumbers(ctx.getSystemPrompt());
+    ctx.ui.notify(`View: original instructions\n${formatted}`, "info");
+    return;
+  }
+
+  if (cmd === "after") {
     const content = readFileSafe(state.file);
     if (!content) {
       ctx.ui.notify(`${INSTR_FILE} not found or unreadable`, "warning");

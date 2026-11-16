@@ -1,7 +1,7 @@
 export const INSTR_FILE = "INSTRUCTIONS.md";
 export const INSTR_FLAG = "instructions";
 export const INSTR_CMD = "manip-instr";
-export const INSTR_SUBCMDS = ["on", "off", "view"] as const;
+export const INSTR_SUBCMDS = ["on", "off", "before", "after"] as const;
 
 export type ExtensionState = {
   file: string | null;

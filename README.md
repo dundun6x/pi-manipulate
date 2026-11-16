@@ -32,7 +32,8 @@ In-session commands are available:
 
 - `/manip-instr on` — Enable the custom instructions
 - `/manip-instr off` — Disable the custom instructions
-- `/manip-instr view` — View the custom instructions
+- `/manip-instr before` — View the original instructions
+- `/manip-instr after` — View the custom instructions
 
 Notably, the underlying session data remains untouched. Since built-in or extension prompts may still be injected into the request as 'system' or 'developer' role messages, this extension filters them out before sending requests to the model.
 
